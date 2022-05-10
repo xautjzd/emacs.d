@@ -5,6 +5,7 @@
 
 ;; Install use-package automatic if not installed previous
 (unless (package-installed-p 'use-package)
+  (package-refresh-contents)
   (package-install 'use-package))
 
 ;; -------------------
@@ -17,7 +18,7 @@
  '(menu-bar-mode tool-bar-mode scroll-bar-mode))
 
 ;; Maximize emacs on startup
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(toggle-frame-fullscreen)
 
 ;; -----------------
 ;; Basic Setup
@@ -52,6 +53,8 @@
 
 ;; Stop create backup files(~)
 (setq make-backup-files nil)
+
+(setq sh-set-shell "zsh")
 
 ;; Disable lockfiles
 (setq create-lockfiles nil)
@@ -145,11 +148,15 @@
                           (lsp))))  ; or lsp-deferred
 
 (use-package lsp-java
+  :hook (java-mode . #'lsp)
   :config
-  (add-hook 'java-mode-hook 'lsp)
-  :ensure t)
-(setq lsp-java-java-path (substitute-in-file-name "$JAVA_HOME/bin/java"))
+  (setq lsp-java-java-path (substitute-in-file-name "$JAVA_HOME/bin/java")))
 ;; LSP end
+
+;; yaml highlighting
+(use-package yaml-mode
+  :ensure t
+  :mode (("\\.yml\\'" . yaml-mode)))
 
 ;; Company mode is a standard completion package that works well with lsp-mode.
 (use-package company
@@ -174,6 +181,12 @@
   (add-hook 'prog-mode-hook 'smartparens-mode))
 
 (use-package yafolding
+  :ensure t)
+
+(use-package org-present
+  :ensure t)
+
+(use-package org-tree-slide
   :ensure t)
 
 ;; (use-package google-translate
