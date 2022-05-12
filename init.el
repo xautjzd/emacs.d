@@ -77,6 +77,10 @@
   :defer t
   :init (load-theme 'spacemacs-light t))
 
+;; search within project: S-p s r
+(use-package rg
+  :ensure t)
+
 ;; find file in project: s-p-f
 (use-package projectile
   :ensure t
@@ -101,6 +105,28 @@
 ;;   :bind (("C-x ," . fzf-projectile))
 ;;   :ensure t)
 ;; (use-package rg :ensure t)
+
+;; integration with projectile, find files in project more quickly, S-p f
+(use-package ivy
+  :ensure t
+  :init
+  (ivy-mode 1)
+  :config
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  (setq enable-recursive-minibuffers t))
+
+(use-package all-the-icons
+  :ensure t
+  :if (display-graphic-p))
+
+(use-package which-key
+  :ensure t
+  :config
+  (setq which-key-side-window-location 'right)
+  (setq which-key-show-early-on-C-h t)
+  (setq which-key-side-window-max-width 0.4)
+  (which-key-mode))
 
 (use-package markdown-mode
   :ensure t
@@ -127,8 +153,13 @@
   :ensure t
   :commands go-mode
   :config
-  (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook 'gofmt-before-save))
+  (setq gofmt-command "goimports"))
+
+(add-hook 'go-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'gofmt-before-save)
+            (setq tab-width 4)
+            (setq indent-tabs-mode 1)))
 
 ;; rust mode
 (use-package rust-mode
@@ -169,11 +200,12 @@
 ;; Optional - provides snippet support.
 (use-package yasnippet
   :ensure t
-  :defer t
-  :if (not noninteractive)
-  :diminish yas-minor-mode
-  :commands (yas-global-mode yas-minor-mode)
-  :hook (go-mode . yas-minor-mode))
+  :init
+  (yas-global-mode 1))
+  
+;; snippet collections
+(use-package yasnippet-snippets
+  :ensure t)
 
 (use-package smartparens
   :ensure t
