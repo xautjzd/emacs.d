@@ -161,6 +161,11 @@
             (setq tab-width 4)
             (setq indent-tabs-mode 1)))
 
+;; javascript, please ensure javascript lsp server installed
+(add-hook 'js-mode-hook #'lsp)
+ (with-eval-after-load 'js
+  (define-key js-mode-map (kbd "M-.") nil))
+
 ;; rust mode
 (use-package rust-mode
   :ensure t
@@ -169,7 +174,6 @@
   (add-hook 'rust-mode-hook #'lsp)
   (add-hook 'rust-mode-hook
           (lambda () (setq indent-tabs-mode nil))))
-
 
 ;; lsp python
 (use-package lsp-pyright
