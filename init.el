@@ -53,11 +53,19 @@
 
 ;; Stop create backup files(~)
 (setq make-backup-files nil)
+;; (setq backup-directory-alist
+;;       `((".*" . ,temporary-file-directory)))
+
+;; Disable lockfiles, format: .#
+(setq create-lockfiles nil)
+; (setq lock-file-name-transforms
+;       `((".*" ,temporary-file-directory t)))
+
+;; Auto save file, format: #xx#
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 (setq sh-set-shell "zsh")
-
-;; Disable lockfiles
-(setq create-lockfiles nil)
 
 ;; Select help window for viewing when using C-h k
 (setq-default help-window-select t)
