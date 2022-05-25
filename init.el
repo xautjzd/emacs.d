@@ -65,6 +65,13 @@
 ;; Set eww default search engine to Google
 (setq eww-search-prefix "https://www.google.com/?q=")
 
+;; Auto insert mode
+(auto-insert-mode t)  ;;; Enable global auto insert mode
+(setq auto-insert-directory "~/.emacs.d/auto-insert-templates/")
+;;(setq auto-insert-query nil) ;;; If you don't want to be prompted before insertion
+(define-auto-insert "\.el" "emacs-lisp-template.el")
+
+
 ;; --------------------
 ;; Packages
 ;;---------------------
@@ -161,9 +168,8 @@
             (setq tab-width 4)
             (setq indent-tabs-mode 1)))
 
-;; javascript, please ensure javascript lsp server installed
 (add-hook 'js-mode-hook #'lsp)
- (with-eval-after-load 'js
+(with-eval-after-load 'js
   (define-key js-mode-map (kbd "M-.") nil))
 
 ;; rust mode
