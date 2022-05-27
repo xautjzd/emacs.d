@@ -11,24 +11,15 @@
 ;; -------------------
 ;;  UI
 ;; -------------------
+;; Disable specified modes
 (mapc
  (lambda (mode)
    (when (fboundp mode)
-     (funcall mode -1)))
+     (funcall mode 0)))
  '(menu-bar-mode tool-bar-mode scroll-bar-mode))
 
 ;; Maximize emacs on startup
 (toggle-frame-fullscreen)
-
-;; -----------------
-;; Basic Setup
-;; -----------------
-
-(eval-when-compile
-  (require 'use-package))
-
-(setq user-full-name "Jiang zhengdong")
-(setq user-mail-address "xautjzd@gmail.com")
 
 ;; Set default font
 (set-face-attribute 'default nil
@@ -44,12 +35,19 @@
 ;; Display line numbers when programming
 ; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
+;; -----------------
+;; Basic Setup
+;; -----------------
+
+(eval-when-compile
+  (require 'use-package))
+
+(setq user-full-name "Jiang zhengdong")
+(setq user-mail-address "xautjzd@gmail.com")
+
 ;; Set custom file to ~/.emacs.d/custom.el
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
-
-;; Enable rg default key bindings(default: C-c s r)
-(rg-enable-default-bindings)
 
 ;; Stop create backup files(~)
 (setq make-backup-files nil)
@@ -79,6 +77,15 @@
 ;;(setq auto-insert-query nil) ;;; If you don't want to be prompted before insertion
 (define-auto-insert "\.el" "emacs-lisp-template.el")
 
+(show-paren-mode 1)
+
+(global-set-key "%" 'match-paren)
+(defun match-paren (arg)
+  "Go to the matching paren if on a paren; otherwise insert %."
+  (interactive "p")
+  (cond ((looking-at "\\s(") (forward-list 1) (backward-char 1))
+        ((looking-at "\\s)") (forward-char 1) (backward-list 1))
+        (t (self-insert-command (or arg 1)))))
 
 ;; --------------------
 ;; Packages
@@ -95,6 +102,8 @@
 ;; search within project: S-p s r
 (use-package rg
   :ensure t)
+;; Enable rg default key bindings(default: C-c s r)
+(rg-enable-default-bindings)
 
 ;; find file in project: s-p-f
 (use-package projectile
@@ -104,6 +113,19 @@
   :init (projectile-global-mode 1)
   :bind-keymap
   ("s-p" . projectile-command-map))
+
+;; Discover projects on startup
+;; (setq projectile-project-search-path '("~/projects/" "~/work/" ("~/github" . 1)))
+
+;; integration with projectile, find files in project more quickly, S-p f
+(use-package ivy
+  :ensure t
+  :init
+  (ivy-mode 1)
+  :config
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  (setq enable-recursive-minibuffers t))
 
 (use-package treemacs
   :bind (([f8] . treemacs))
@@ -120,16 +142,6 @@
 ;;   :bind (("C-x ," . fzf-projectile))
 ;;   :ensure t)
 ;; (use-package rg :ensure t)
-
-;; integration with projectile, find files in project more quickly, S-p f
-(use-package ivy
-  :ensure t
-  :init
-  (ivy-mode 1)
-  :config
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
-  (setq enable-recursive-minibuffers t))
 
 (use-package all-the-icons
   :ensure t
@@ -155,9 +167,13 @@
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)
+  :hook
+  (js-mode . #'lsp)
   :config
-  (setq lsp-enable-file-watchers nil)  
-  :hook (go-mode . lsp-deferred))
+  (setq lsp-enable-file-watchers nil))
+
+(with-eval-after-load 'js
+  (define-key js-mode-map (kbd "M-.") nil))
 
 (use-package lsp-ui
   :ensure t
@@ -166,28 +182,22 @@
 ;; go mode
 (use-package go-mode
   :ensure t
-  :commands go-mode
   :config
-  (setq gofmt-command "goimports"))
-
-(add-hook 'go-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook 'gofmt-before-save)
-            (setq tab-width 4)
-            (setq indent-tabs-mode 1)))
-
-(add-hook 'js-mode-hook #'lsp)
-(with-eval-after-load 'js
-  (define-key js-mode-map (kbd "M-.") nil))
+  (setq gofmt-command "goimports")
+  (setq tab-width 4)
+  (setq indent-tabs-mode 1)
+  :hook
+  (go-mode . lsp-deferred)
+  (before-save . gofmt-before-save))
 
 ;; rust mode
 (use-package rust-mode
   :ensure t
+  :hook
+  (rust-mode . lsp-deferred)
   :config
   (setq rust-format-on-save t)
-  (add-hook 'rust-mode-hook #'lsp)
-  (add-hook 'rust-mode-hook
-          (lambda () (setq indent-tabs-mode nil))))
+  (setq indent-tabs-mode nil))
 
 ;; lsp python
 (use-package lsp-pyright
@@ -197,7 +207,8 @@
                           (lsp))))  ; or lsp-deferred
 
 (use-package lsp-java
-  :hook (java-mode . #'lsp)
+  :hook
+  (java-mode . #'lsp)
   :config
   (setq lsp-java-java-path (substitute-in-file-name "$JAVA_HOME/bin/java")))
 ;; LSP end
@@ -227,8 +238,8 @@
 
 (use-package smartparens
   :ensure t
-  :config
-  (add-hook 'prog-mode-hook 'smartparens-mode))
+  :hook
+  (prog-mode-hook . #'smartparens-mode))
 
 (use-package yafolding
   :ensure t)
