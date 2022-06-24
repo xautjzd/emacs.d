@@ -85,7 +85,7 @@
 (auto-insert-mode t)  ;;; Enable global auto insert mode
 (setq auto-insert-directory "~/.emacs.d/auto-insert-templates/")
 ;;(setq auto-insert-query nil) ;;; If you don't want to be prompted before insertion
-(define-auto-insert "\.el" "emacs-lisp-template.el")
+(define-auto-insert "\\.el" "emacs-lisp-template.el")
 
 (electric-pair-mode 1)
 (add-hook 'org-mode-hook (lambda ()
@@ -113,19 +113,18 @@
 (use-package spacemacs-theme
   :ensure t
   :defer t
-  :init (load-theme 'spacemacs-light t))
+  :init (load-theme 'spacemacs-dark t))
 
 ;; search within project: S-p s r
 (use-package rg
   :ensure t)
 ;; Enable rg default key bindings(default: C-c s r)
-(rg-enable-default-bindings)
+(rg-enable-menu)
 
 ;; find file in project: s-p-f
 (use-package projectile
   :ensure t
-  :defer t
-  :diminish projectile-mode
+  :diminish
   :init (projectile-global-mode 1)
   :bind-keymap
   ("s-p" . projectile-command-map))
@@ -136,11 +135,11 @@
 ;; integration with projectile, find files in project more quickly, S-p f
 (use-package ivy
   :ensure t
+  :diminish
   :init
   (ivy-mode 1)
   :config
   (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
   (setq enable-recursive-minibuffers t))
 
 (use-package treemacs
@@ -161,11 +160,13 @@
 
 (use-package flycheck
   :ensure t
+  :diminish
   :init
   (global-flycheck-mode 1))
 
 (use-package flycheck-rust
   :ensure t
+  :diminish
   :hook
   (flycheck-mode . flycheck-rust-setup))
 
@@ -181,6 +182,7 @@
 
 (use-package which-key
   :ensure t
+  :diminish
   :config
   (setq which-key-side-window-location 'right)
   (setq which-key-show-early-on-C-h t)
@@ -264,6 +266,7 @@
 ;; Optional - provides snippet support.
 (use-package yasnippet
   :ensure t
+  :diminish yas-minor-mode
   :init
   (yas-global-mode 1))
   
