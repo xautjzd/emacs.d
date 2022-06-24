@@ -34,6 +34,7 @@
 (global-display-line-numbers-mode)
 ;; Display line numbers when programming
 ; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(setq column-number-mode t)
 
 ;; -----------------
 ;; Basic Setup
@@ -45,9 +46,15 @@
 (setq user-full-name "Jiang zhengdong")
 (setq user-mail-address "xautjzd@gmail.com")
 
+(prefer-coding-system 'utf-8)
+(set-language-environment "utf-8")
+
 ;; Set custom file to ~/.emacs.d/custom.el
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
+
+;; Ask y or n instead of yes or no
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Stop create backup files(~)
 (setq make-backup-files nil)
@@ -63,6 +70,9 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+;; Highlight current line
+(global-hl-line-mode 1)
+
 (setq sh-set-shell "zsh")
 
 ;; Select help window for viewing when using C-h k
@@ -76,6 +86,12 @@
 (setq auto-insert-directory "~/.emacs.d/auto-insert-templates/")
 ;;(setq auto-insert-query nil) ;;; If you don't want to be prompted before insertion
 (define-auto-insert "\.el" "emacs-lisp-template.el")
+
+(electric-pair-mode 1)
+(add-hook 'org-mode-hook (lambda ()
+           (setq-local electric-pair-inhibit-predicate
+                   `(lambda (c)
+                      (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
 
 (show-paren-mode 1)
 
@@ -138,10 +154,26 @@
 (use-package magit
   :ensure t)
 
-;; (use-package fzf
-;;   :bind (("C-x ," . fzf-projectile))
-;;   :ensure t)
-;; (use-package rg :ensure t)
+(use-package evil
+  :ensure t
+  :init
+  (evil-mode 1))
+
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode 1))
+
+(use-package flycheck-rust
+  :ensure t
+  :hook
+  (flycheck-mode . flycheck-rust-setup))
+
+(if (eq system-type 'darwin)
+    (use-package exec-path-from-shell
+      :ensure t
+      :config
+      (exec-path-from-shell-initialize)))
 
 (use-package all-the-icons
   :ensure t
@@ -168,7 +200,10 @@
   :ensure t
   :commands (lsp lsp-deferred)
   :hook
-  (js-mode . #'lsp)
+  ;; Please install clang lsp server manually, eg: brew install llvm
+  (c-mode . lsp)
+  (c++-mode . lsp)
+  (js-mode . lsp)
   :config
   (setq lsp-enable-file-watchers nil))
 
@@ -236,11 +271,6 @@
 (use-package yasnippet-snippets
   :ensure t)
 
-(use-package smartparens
-  :ensure t
-  :hook
-  (prog-mode-hook . #'smartparens-mode))
-
 (use-package yafolding
   :ensure t)
 
@@ -250,14 +280,6 @@
 (use-package org-tree-slide
   :ensure t)
 
-;; (use-package google-translate
-;;   :ensure t)
-;; (use-package google-translate-smooth-ui
-;;   :ensure t
-;;   :config
-;;   (setq google-translate-translation-directions-alist
-;;       '(("en" . "zh") ("zh" . "en"))))
-
 ;; ------------------
 ;; Bindings
 ;; -----------------
@@ -265,3 +287,8 @@
 (global-set-key (kbd "M-g") 'goto-line)
 ; (global-set-key (kbd "C-x m") 'set-mark-command)
 ; (global-set-key (kbd "C-c t") 'google-translate-smooth-translate)
+
+;; Org-mode key binding
+(global-set-key (kbd "C-c l") #'org-store-link)
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
