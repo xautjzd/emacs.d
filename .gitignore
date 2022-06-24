@@ -1,0 +1,8 @@
+elpa/
+eshell/
+transient/
+custom.el
+recentf
+projectile-bookmarks.*
+.lsp*
+

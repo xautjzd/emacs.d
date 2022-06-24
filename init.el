@@ -57,7 +57,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Stop create backup files(~)
-(setq make-backup-files nil)
+(setq make-backup-files 'none)
 ;; (setq backup-directory-alist
 ;;       `((".*" . ,temporary-file-directory)))
 
