@@ -36,6 +36,9 @@
 ; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (setq column-number-mode t)
 
+;; Highlight current line
+(global-hl-line-mode 1)
+
 ;; -----------------
 ;; Basic Setup
 ;; -----------------
@@ -49,6 +52,14 @@
 (prefer-coding-system 'utf-8)
 (set-language-environment "utf-8")
 
+(electric-pair-mode 1)
+(show-paren-mode 1)
+
+(setq sh-set-shell "zsh")
+
+;; perf: use more memory to reduce GC rate
+(setq gc-cons-threshold 100000000)
+
 ;; Set custom file to ~/.emacs.d/custom.el
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
@@ -57,7 +68,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Stop create backup files(~)
-(setq make-backup-files 'none)
+(setq make-backup-files nil)
 ;; (setq backup-directory-alist
 ;;       `((".*" . ,temporary-file-directory)))
 
@@ -69,11 +80,6 @@
 ;; Auto save file, format: #xx#
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
-
-;; Highlight current line
-(global-hl-line-mode 1)
-
-(setq sh-set-shell "zsh")
 
 ;; Select help window for viewing when using C-h k
 (setq-default help-window-select t)
@@ -87,15 +93,12 @@
 ;;(setq auto-insert-query nil) ;;; If you don't want to be prompted before insertion
 (define-auto-insert "\\.el" "emacs-lisp-template.el")
 
-(electric-pair-mode 1)
 (add-hook 'org-mode-hook (lambda ()
            (setq-local electric-pair-inhibit-predicate
                    `(lambda (c)
                       (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
 
-(show-paren-mode 1)
-
-(global-set-key "%" 'match-paren)
+;; (global-set-key "%" 'match-paren)
 (defun match-paren (arg)
   "Go to the matching paren if on a paren; otherwise insert %."
   (interactive "p")
@@ -125,7 +128,7 @@
 (use-package projectile
   :ensure t
   :diminish
-  :init (projectile-global-mode 1)
+  :init (projectile-mode 1)
   :bind-keymap
   ("s-p" . projectile-command-map))
 
