@@ -28,9 +28,9 @@
                     :width 'normal)
 
 
-(global-display-line-numbers-mode)
+;; (global-display-line-numbers-mode)
 ;; Display line numbers when programming
-; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (setq column-number-mode t)
 
@@ -40,7 +40,7 @@
 (use-package spacemacs-theme
   :ensure t
   :defer t
-  :init (load-theme 'spacemacs-dark t))
+  :init (load-theme 'spacemacs-light t))
 
 (use-package all-the-icons
   :ensure t

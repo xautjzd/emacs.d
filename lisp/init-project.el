@@ -9,15 +9,17 @@
 
 ;; search within project: S-p s r
 (use-package rg
-  :ensure t)
-;; Enable rg default key bindings(default: C-c s r)
-(rg-enable-menu)
+  :ensure t
+  :init
+  (rg-enable-default-bindings))
+;; (rg-enable-menu)
 
 ;; find file in project: s-p-f
 (use-package projectile
   :ensure t
   :diminish
-  :init (projectile-mode 1)
+  :init
+  (projectile-mode 1)
   :bind-keymap
   ("s-p" . projectile-command-map))
 

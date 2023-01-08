@@ -18,10 +18,9 @@
 
 (require 'init-package)
 (require 'init-ui)
-(require 'init-git)
 (require 'init-editor)
+(require 'init-git)
 (require 'init-project)
-(require 'init-lsp)
 (require 'init-snippet)
 (require 'init-language)
 (require 'init-language-rust)
@@ -29,6 +28,7 @@
 (require 'init-mode-yml)
 (require 'init-mode-markdown)
 (require 'init-mode-org)
+(require 'init-lsp)
 (require 'init-key-binding)
 
 ;;; init.el ends here

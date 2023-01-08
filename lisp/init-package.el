@@ -1,4 +1,4 @@
-;;; test.el --- a simple package.Package Configuration File -*- lexical-binding: t -*-
+;;; init-package.el --- a simple package.Package Configuration File -*- lexical-binding: t -*-
 
 ;;; Commentary:
 

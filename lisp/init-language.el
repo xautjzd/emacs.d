@@ -21,5 +21,10 @@
 (use-package yafolding
   :ensure t)
 
+(use-package slime
+  :ensure t
+  :config
+  (setq inferior-lisp-program "sbcl"))
+
 (provide 'init-language)
 ;;; init-language.el ends here

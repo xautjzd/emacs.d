@@ -16,10 +16,14 @@
     (use-package exec-path-from-shell
       :ensure t
       :config
-      (exec-path-from-shell-initialize)))
+      (exec-path-from-shell-initialize)
+      (setq exec-path-from-shell-arguments "-l")))
 
-(electric-pair-mode 1)
-(show-paren-mode 1)
+;; Insert closing parenthesis when typing an open parenthesis.
+(add-hook 'prog-mode-hook (lambda () (electric-pair-mode 1)))
+
+;; Highlight matching parenthesis.
+(add-hook 'prog-mode-hook (lambda () (show-paren-mode 1)))
 
 ;; Stop create backup files(~)
 (setq make-backup-files nil)
@@ -38,14 +42,14 @@
 ;; Select help window for viewing when using C-h k
 (setq-default help-window-select t)
 
-;; Autoindent open-*-lines
-(defvar newline-and-indent t
-  "Modify the behavior of the open-*-line functions to cause them to autoindent.")
-
 ;; Auto insert mode
 (auto-insert-mode t)  ;;; Enable global auto insert mode
 (setq auto-insert-directory "~/.emacs.d/auto-insert-templates/")
 ;;(setq auto-insert-query nil) ;;; If you don't want to be prompted before insertion
+
+;; Autoindent open-*-lines
+(defvar newline-and-indent t
+  "Modify the behavior of the open-*-line functions to cause them to autoindent.")
 
 ;; Behave like vi's o command
 (defun open-next-line (arg)
@@ -80,6 +84,7 @@
   (setq which-key-side-window-max-width 0.4)
   (which-key-mode))
 
+(global-unset-key (kbd "s-l"))
 
 (provide 'init-editor)
 ;;; init-editor.el ends here
