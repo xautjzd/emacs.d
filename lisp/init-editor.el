@@ -25,6 +25,10 @@
 ;; Highlight matching parenthesis.
 (add-hook 'prog-mode-hook (lambda () (show-paren-mode 1)))
 
+;; Kill all the unmodified buffers that you have not used for a long time.
+(midnight-mode 1)
+(setq clean-buffer-list-delay-general 1)
+
 ;; Stop create backup files(~)
 (setq make-backup-files nil)
 ;; (setq backup-directory-alist

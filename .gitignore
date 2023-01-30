@@ -1,8 +1,14 @@
 elpa/
 eshell/
+workspace/
 transient/
+.cache/
+auto-save-list/
 custom.el
 recentf
 projectile-bookmarks.*
+eclipse.jdt.ls
 .lsp*
+projects
+.dap-breakpoints
 

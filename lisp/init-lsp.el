@@ -55,7 +55,8 @@
   (rust-mode . lsp-deferred)
   :config
   (setq rust-format-on-save t)
-  (setq indent-tabs-mode nil))
+  (setq indent-tabs-mode nil)
+  (prettify-symbols-mode))
 
 ;; lsp python client
 (use-package lsp-pyright
