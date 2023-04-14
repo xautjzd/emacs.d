@@ -10,5 +10,8 @@ projectile-bookmarks.*
 eclipse.jdt.ls
 .lsp*
 projects
+abbrev_defs
 .dap-breakpoints
-
+.org-id-locations
+bookmarks
+url/

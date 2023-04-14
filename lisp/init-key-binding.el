@@ -14,6 +14,9 @@
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
 
+;; Translate
+(global-set-key (kbd "C-c t") #'gts-do-translate)
+
 ;; (global-unset-key (kbd "s-l"))
 
 (provide 'init-key-binding)

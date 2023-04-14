@@ -11,6 +11,17 @@
   :ensure t)
 
 (setq org-log-done t)
+(add-hook 'org-mode-hook
+	  (lambda () (electric-pair-mode -1)))
+
+;; C-c C-c evaluate code blocks, more refer: https://orgmode.org/manual/Evaluating-Code-Blocks.html 
+(org-babel-do-load-languages
+  'org-babel-load-languages
+    '((emacs-lisp . t)
+      (R . t)
+      (shell . t)
+      (C . t)
+      (python . t)))
 
 ;; C-c C-e l p export org doc to pdf
 (with-eval-after-load 'ox-latex
@@ -31,6 +42,9 @@
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
   (setq org-latex-listings 'minted)
   (add-to-list 'org-latex-packages-alist '("" "minted")))
+
+;; export org to md
+(require 'ox-md)
 
 (provide 'init-mode-org)
 ;;; init-mode-org.el ends here

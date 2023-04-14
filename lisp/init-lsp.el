@@ -23,7 +23,10 @@
 
 (use-package lsp-ui
   :ensure t
-  :commands lsp-ui-mode)
+  :commands lsp-ui-mode
+  :config
+  ;; more lsp ui cofig, please refer: https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
+  (setq lsp-ui-doc-show-with-cursor t))
 
 (use-package lsp-treemacs
   :ensure t
@@ -70,6 +73,7 @@
   :hook
   (java-mode . lsp-deferred)
   :config
+  (setq lsp-java-vmargs '("-Xmx2G" "-Xms100m" "-Dsun.zip.disableMemoryMapping=true"))
   (setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz"))
 
 ;; lsp ts client

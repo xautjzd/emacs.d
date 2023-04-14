@@ -25,10 +25,14 @@
 (require 'init-language)
 (require 'init-language-rust)
 (require 'init-language-emacs-lisp)
+(require 'init-language-common-lisp)
 (require 'init-mode-yml)
 (require 'init-mode-markdown)
 (require 'init-mode-org)
 (require 'init-lsp)
 (require 'init-key-binding)
+(require 'init-misc)
+
+(add-to-list 'load-path "~/.emacs.d/elpa/codeium.el")
 
 ;;; init.el ends here
