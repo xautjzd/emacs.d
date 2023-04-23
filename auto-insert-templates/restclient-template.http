@@ -1,0 +1,13 @@
+# -*- mode: restclient; url-max-redirections: 0 -*-
+
+# refer: https://github.com/pashky/restclient.el/blob/master/examples/httpbin
+
+# Post request template
+# request body file
+:ignore := (setq dir-prefix "~/Documents/http")
+:REQ_BODY := (with-temp-buffer (insert-file-contents (concat (file-name-as-directory dir-prefix) "data.json")) (buffer-string))
+#POST http://httpbin.org/post
+Content-Type: application/json
+
+:REQ_BODY
+

@@ -33,7 +33,8 @@
   (setq inferior-lisp-program "sbcl"))
 
 (use-package restclient
-  :ensure t)
+  :ensure t
+  :mode ("\\.http\\'" . restclient-mode))
 
 (provide 'init-language)
 ;;; init-language.el ends here
