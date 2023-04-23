@@ -93,6 +93,8 @@
   (which-key-mode))
 
 (global-unset-key (kbd "s-l"))
+;; quickly switch between visible windows
+(global-set-key (kbd "C-x o") 'ace-window)
 
 ;; added temporally to fix treemacs upgration bugs, refer: https://github.com/Alexander-Miller/treemacs/issues/1017 https://github.com/caldwell/build-emacs/issues/126
 (add-to-list 'image-types 'svg)
