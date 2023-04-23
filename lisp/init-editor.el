@@ -94,5 +94,8 @@
 
 (global-unset-key (kbd "s-l"))
 
+;; added temporally to fix treemacs upgration bugs, refer: https://github.com/Alexander-Miller/treemacs/issues/1017 https://github.com/caldwell/build-emacs/issues/126
+(add-to-list 'image-types 'svg)
+
 (provide 'init-editor)
 ;;; init-editor.el ends here

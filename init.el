@@ -33,6 +33,4 @@
 (require 'init-key-binding)
 (require 'init-misc)
 
-(add-to-list 'load-path "~/.emacs.d/elpa/codeium.el")
-
 ;;; init.el ends here
