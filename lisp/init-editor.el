@@ -39,9 +39,9 @@
 ; (setq lock-file-name-transforms
 ;       `((".*" ,temporary-file-directory t)))
 
-;; Auto save file, format: #xx#
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+;; Disable auto save file
+(setq auto-save-default nil)
+(setq auto-save-list-file-prefix nil)
 
 ;; Select help window for viewing when using C-h k
 (setq-default help-window-select t)

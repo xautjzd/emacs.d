@@ -34,13 +34,16 @@
 
 (setq column-number-mode t)
 
+;; Display time in mode line
+(display-time-mode 1)
+
 ;; Highlight current line
 (global-hl-line-mode 1)
 
 (use-package spacemacs-theme
   :ensure t
   :defer t
-  :init (load-theme 'spacemacs-light t))
+  :init (load-theme 'spacemacs-dark t))
 
 (use-package all-the-icons
   :ensure t
