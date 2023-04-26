@@ -80,8 +80,6 @@
 (global-set-key (kbd "M-o") 'open-previous-line)
 
 (setq eww-search-prefix "https://cn.bing.com/search?q=")    ; Use another engine for searching
-(setq url-proxy-services '(("http" . "127.0.0.1:7890")
-                           ("https" . "127.0.0.1:7890")))
 
 (use-package which-key
   :ensure t

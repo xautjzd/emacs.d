@@ -13,10 +13,10 @@
   (setq company-minimum-prefix-length 1))
 
 ;; code AI
-(use-package codeium
-  :ensure t
-  :init
-  (add-to-list 'completion-at-point-functions #'codeium-completion-at-point))
+;; (use-package codeium
+;;   :ensure t
+;;   :init
+;;   (add-to-list 'completion-at-point-functions #'codeium-completion-at-point))
 
 (use-package flycheck
   :ensure t
