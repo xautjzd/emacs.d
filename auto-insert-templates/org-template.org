@@ -1,0 +1,5 @@
+#+STARTUP: show2levels indent inlineimages hidestars hideblocks logdone
+#+DRAWERS: note
+#+OPTIONS: toc:t H:2 num:t timestamp:t author:t
+#+KEYWORDS:
+#+TITLE:

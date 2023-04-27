@@ -36,6 +36,7 @@
 
 ;; Display time in mode line
 (display-time-mode 1)
+(setq display-time-default-load-average nil)
 
 ;; Highlight current line
 (global-hl-line-mode 1)

@@ -13,17 +13,47 @@
 (use-package org-bullets
   :ensure t
   :config
-  (add-hook 'org-mode-hook (lambda () (
-				       org-bullets-mode 1)))
-  (setq org-bullets-bullet-list '("►" "▸" "•" "★" "◇" "◇" "◇" "◇")))
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-(setq org-log-done t)
-(add-hook 'org-mode-hook
-	  (lambda () (electric-pair-mode -1)))
+(require 'org-tempo)
+
+(add-hook 'prog-mode-hook (lambda () (electric-pair-mode 1)))
+
+(setq org-export-default-language "zh")
+(define-auto-insert "\.org" "org-template.org")
 
 (setq org-directory "~/org/")
-;; (setq org-default-notes-file "~/org/notes.org")
-;; (setq org-footnote-section "Notes")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+
+;; C-c c to add some capture template
+(setq org-capture-templates
+             '(("p" "Personal Task"  entry
+               (file "personal.org")
+               "* TODO %?" :empty-lines 1)
+			   ("w" "Work Task" entry
+			   (file "work.org")
+			   "* TODO %？" :empty-lines 1)))
+
+;; Give it a timestamp when moving a todo task into a completed state.x
+(setq org-log-done 'time
+      ;; todo item in ~/org/ directory will be added to agenda view
+      org-agenda-files (list "~/org/")
+      org-refile-use-outline-path 'file
+      ;; using C-c C-w keystrokes to move org head line quickly between files
+      org-refile-targets '((org-agenda-files :maxlevel . 3))
+      org-outline-path-complete-in-steps nil)
+
+;; C-u C-u C-c C-t switch sequences
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "DOING(g)"  "|" "DONE(d)")
+	(sequence "代办" "处理中" "|" "已完成")
+	(sequence "BUG(b)" "FIXING(f)" "|" "FIXED(x)")))
+
+;; Org-mode key binding
+(global-set-key (kbd "C-c l") #'org-store-link)
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
+
 
 ;; C-c C-c evaluate code blocks, more refer: https://orgmode.org/manual/Evaluating-Code-Blocks.html 
 (org-babel-do-load-languages

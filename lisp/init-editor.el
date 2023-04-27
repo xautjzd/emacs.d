@@ -45,6 +45,7 @@
 
 ;; Select help window for viewing when using C-h k
 (setq-default help-window-select t)
+(setq user-mail-address "xautjzd@gmail.com")
 
 ;; Auto insert mode
 (auto-insert-mode t)  ;;; Enable global auto insert mode
@@ -92,7 +93,7 @@
 
 (global-unset-key (kbd "s-l"))
 ;; quickly switch between visible windows
-(global-set-key (kbd "C-x o") 'ace-window)
+(global-set-key (kbd "M-p") 'ace-window)
 
 ;; added temporally to fix treemacs upgration bugs, refer: https://github.com/Alexander-Miller/treemacs/issues/1017 https://github.com/caldwell/build-emacs/issues/126
 (add-to-list 'image-types 'svg)
