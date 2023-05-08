@@ -46,6 +46,7 @@
 
 (use-package dashboard
   :ensure t
+  :after all-the-icons
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-startup-banner 'logo)
@@ -54,9 +55,12 @@
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-set-footer nil)
-  (setq dashboard-items '((projects . 5)
-			  (recents . 5)
-			  (agenda . 5))))
+  (dashboard-modify-heading-icons '((projects . "star")))
+  (setq dashboard-items '((projects . 20)
+			  (recents . 10)
+			  (agenda . 2))))
+
+
 
 (provide 'init-project)
 ;;; init-project.el ends here
