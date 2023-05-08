@@ -26,7 +26,8 @@
   :commands lsp-ui-mode
   :config
   ;; more lsp ui cofig, please refer: https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
-  (setq lsp-ui-doc-show-with-cursor t))
+  (setq lsp-ui-doc-show-with-cursor t)
+  (setq lsp-ui-doc-position "at-point"))
 
 (use-package lsp-treemacs
   :ensure t
