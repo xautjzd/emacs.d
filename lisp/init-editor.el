@@ -29,6 +29,12 @@
 (midnight-mode 1)
 (setq clean-buffer-list-delay-general 1)
 
+;; Never kill buffers list here
+(setq clean-buffer-list-kill-never-buffer-names (nconc clean-buffer-list-kill-never-buffer-names
+                 '("*eshell*"
+                   "*ielm*"
+                   "*dashboard*")))
+
 ;; Stop create backup files(~)
 (setq make-backup-files nil)
 ;; (setq backup-directory-alist

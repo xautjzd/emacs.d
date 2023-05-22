@@ -44,6 +44,14 @@
   :ensure t
   :after (treemacs projectile))
 
+(use-package treemacs-magit
+  :ensure t
+  :after (treemacs magit))
+
+(use-package treemacs-all-the-icons
+  :ensure t
+  :after (treemacs))
+
 (use-package dashboard
   :ensure t
   :after all-the-icons
