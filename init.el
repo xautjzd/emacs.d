@@ -29,10 +29,7 @@
 (require 'init-mode-yml)
 (require 'init-mode-markdown)
 (require 'init-mode-org)
-;; emacs buildin lsp client: eglot in version 29
-(eval-when-compile
-  (when (version< emacs-version "29.0")
-    (require 'init-lsp)))
+(require 'init-lsp)
 (require 'init-key-binding)
 (require 'init-misc)
 
