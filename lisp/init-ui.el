@@ -36,6 +36,7 @@
 
 ;; Display time in mode line
 (display-time-mode 1)
+(setq display-time-24hr-format t)
 (setq display-time-default-load-average nil)
 
 ;; Highlight current line
