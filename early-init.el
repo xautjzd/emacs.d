@@ -56,4 +56,7 @@
                      (float-time (time-subtract after-init-time before-init-time))
                      gcs-done)))
 
+;; Maximize frame on startup
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;;; early-init.el ends here

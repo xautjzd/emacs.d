@@ -8,11 +8,6 @@
 
 ;;; Code:
 
-;; Set custom file to ~/.emacs.d/custom.el
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(when (file-exists-p custom-file)
-  (load custom-file))
-
 ;; custom scripts located in ~/.emacs.d/lisp/
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 

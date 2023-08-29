@@ -62,6 +62,11 @@
 (defvar newline-and-indent t
   "Modify the behavior of the open-*-line functions to cause them to autoindent.")
 
+;; Set custom file to ~/.emacs.d/custom.el
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
 ;; Behave like vi's o command
 (defun open-next-line (arg)
   "Move to the next line and then opens a line. See also `newline-and-indent'."
@@ -103,6 +108,9 @@
 
 ;; added temporally to fix treemacs upgration bugs, refer: https://github.com/Alexander-Miller/treemacs/issues/1017 https://github.com/caldwell/build-emacs/issues/126
 (add-to-list 'image-types 'svg)
+
+;; (setq url-proxy-services '(("http" . "127.0.0.1:7890")
+;;                            ("https" . "127.0.0.1:7890")))
 
 (provide 'init-editor)
 ;;; init-editor.el ends here

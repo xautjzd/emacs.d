@@ -10,8 +10,13 @@
       inhibit-startup-message t
       initial-scratch-message nil)
 
-;; Maximize emacs on startup
-(toggle-frame-fullscreen)
+;; maximize frame
+;; (toggle-frame-fullscreen)
+
+;; Spacemacs theme
+(unless (package-installed-p 'spacemacs-theme)
+  (package-install 'spacemacs-theme))
+(load-theme 'spacemacs-dark t)
 
 ;; Disable specified modes
 (mapc
@@ -42,10 +47,12 @@
 ;; Highlight current line
 (global-hl-line-mode 1)
 
-(use-package spacemacs-theme
-  :ensure t
-  :defer t
-  :init (load-theme 'spacemacs-dark t))
+;; Calendar
+;; Start from monday
+(setq calendar-week-start-day 1)
+;; Set monospace font to fix calendar alignment
+(add-hook 'calendar-mode-hook
+	  (lambda () (face-remap-add-relative 'default '(:family "Courier" :height 200))))
 
 (use-package all-the-icons
   :ensure t
