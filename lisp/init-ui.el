@@ -54,9 +54,21 @@
 (add-hook 'calendar-mode-hook
 	  (lambda () (face-remap-add-relative 'default '(:family "Courier" :height 200))))
 
-(use-package all-the-icons
+
+;; (use-package all-the-icons
+;;   :ensure t
+;;   :if (display-graphic-p))
+
+(use-package nerd-icons
+  :ensure t)
+
+(use-package doom-modeline
   :ensure t
-  :if (display-graphic-p))
+  :init (doom-modeline-mode 1))
 
 (provide 'init-ui)
 ;;; init-ui.el ends here
+
+;; Local Variables:
+;; byte-compile-warnings: (not free-vars)
+;; End:

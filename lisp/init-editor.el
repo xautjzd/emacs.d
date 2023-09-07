@@ -10,6 +10,9 @@
 ;; Ask y or n instead of yes or no
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(setq byte-compile-warnings '(not nresolved
+                                  free-vars))
+
 (setq sh-set-shell "zsh")
 
 (if (eq system-type 'darwin)
@@ -81,8 +84,7 @@
 
 ;; Behave like vi's O command
 (defun open-previous-line (arg)
-  "Open a new line before the current one. 
-     See also `newline-and-indent'."
+  "Open a new line before the current one. See also `newline-and-indent'."
   (interactive "p")
   (beginning-of-line)
   (open-line arg)
@@ -114,3 +116,7 @@
 
 (provide 'init-editor)
 ;;; init-editor.el ends here
+
+;; Local Variables:
+;; byte-compile-warnings: (not free-vars)
+;; End:
