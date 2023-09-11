@@ -12,6 +12,9 @@
 ;; Translate
 (global-set-key (kbd "C-c t") #'gts-do-translate)
 
+;; Jump to word quickly
+(global-set-key (kbd "C-c g") 'avy-goto-word-0)
+
 ;; (global-unset-key (kbd "s-l"))
 
 (provide 'init-key-binding)
