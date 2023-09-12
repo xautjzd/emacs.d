@@ -28,6 +28,7 @@
 (require 'init-language-rust)
 (require 'init-language-emacs-lisp)
 (require 'init-language-common-lisp)
+(require 'init-language-lua)
 (require 'init-mode-yml)
 (require 'init-mode-markdown)
 (require 'init-mode-org)
