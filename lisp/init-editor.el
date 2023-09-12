@@ -114,6 +114,16 @@
 ;; (setq url-proxy-services '(("http" . "127.0.0.1:7890")
 ;;                            ("https" . "127.0.0.1:7890")))
 
+;; select region
+(defun select-current-line-to-line (end-line)
+  "Select text from the current line to END-LINE."
+  (interactive "nEnd line: ")
+  (beginning-of-line)
+  (push-mark (point))
+  (goto-line end-line)
+  (end-of-line)
+  (activate-mark))
+
 (provide 'init-editor)
 ;;; init-editor.el ends here
 

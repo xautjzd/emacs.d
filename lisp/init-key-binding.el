@@ -15,6 +15,8 @@
 ;; Jump to word quickly
 (global-set-key (kbd "C-c g") 'avy-goto-word-0)
 
+(global-set-key (kbd "C-c m") 'select-current-line-to-line)
+
 ;; (global-unset-key (kbd "s-l"))
 
 (provide 'init-key-binding)

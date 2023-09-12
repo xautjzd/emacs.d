@@ -46,5 +46,13 @@
           (lambda ()
             (toggle-truncate-lines t)))
 
+;; Please install pgformatter first, refer: https://github.com/darold/pgFormatter
+(use-package sqlformat
+  :ensure t
+  :config
+  (setq sqlformat-command 'pgformatter)
+  (setq sqlformat-args '("--keyword-case" "2" "--spaces" "2")))
+;;  (add-hook 'sql-mode-hook 'sqlformat-on-save-mode))
+
 (provide 'init-sql)
 ;;; init-sql.el ends here
