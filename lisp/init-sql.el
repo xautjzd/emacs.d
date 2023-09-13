@@ -54,5 +54,9 @@
   (setq sqlformat-args '("--keyword-case" "2" "--spaces" "2")))
 ;;  (add-hook 'sql-mode-hook 'sqlformat-on-save-mode))
 
+(add-hook 'sql-mode-hook
+	  (lambda ()
+	    (local-set-key "\C-c \C-f" 'sqlformat)))
+
 (provide 'init-sql)
 ;;; init-sql.el ends here
