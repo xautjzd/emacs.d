@@ -27,6 +27,10 @@
 (use-package yafolding
   :ensure t)
 
+;; (setq-default tab-width 4)      ; Set the default tab width to 4 spaces
+(setq-default indent-tabs-mode nil) ; Use spaces for indentation, not tabs
+(setq-default c-basic-offset 4) ; Set the default indentation width to 4 spaces (for programming modes)
+
 (use-package slime
   :ensure t
   :config
