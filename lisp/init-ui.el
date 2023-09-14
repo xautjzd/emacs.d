@@ -11,7 +11,7 @@
       initial-scratch-message nil)
 
 ;; maximize frame
-;; (toggle-frame-fullscreen)
+(toggle-frame-fullscreen)
 
 ;; Disable specified modes
 (mapc
