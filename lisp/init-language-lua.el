@@ -17,8 +17,5 @@
 
 (add-hook 'lua-mode-hook (lambda () (setq tab-width 2)))
 
-;; format lua code on save
-(add-hook 'after-save-hook 'lua-format-buffer)
-
 (provide 'init-language-lua)
 ;;; init-language-lua.el ends here
