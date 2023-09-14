@@ -44,13 +44,9 @@
   :ensure t
   :after (treemacs projectile))
 
-(use-package treemacs-all-the-icons
-  :ensure t
-  :after (treemacs))
-
 (use-package dashboard
   :ensure t
-  :after all-the-icons
+  :after nerd-icons
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-startup-banner 'logo)
@@ -63,8 +59,6 @@
   (setq dashboard-items '((projects . 20)
 			  (recents . 10)
 			  (agenda . 2))))
-
-
 
 (provide 'init-project)
 ;;; init-project.el ends here

@@ -13,11 +13,6 @@
 ;; maximize frame
 ;; (toggle-frame-fullscreen)
 
-;; Spacemacs theme
-(unless (package-installed-p 'spacemacs-theme)
-  (package-install 'spacemacs-theme))
-(load-theme 'spacemacs-dark t)
-
 ;; Disable specified modes
 (mapc
  (lambda (mode)
@@ -54,16 +49,23 @@
 (add-hook 'calendar-mode-hook
 	  (lambda () (face-remap-add-relative 'default '(:family "Courier" :height 200))))
 
+;; Spacemacs theme
+(use-package spacemacs-theme
+  :ensure t
+  :init
+  (load-theme 'spacemacs-dark t))
 
 ;; (use-package all-the-icons
 ;;   :ensure t
 ;;   :if (display-graphic-p))
 
-(use-package nerd-icons
-  :ensure t)
+(unless (package-installed-p 'nerd-icons)
+  (package-install 'nerd-icons)
+  (nerd-icons-install-fonts))
 
 (use-package doom-modeline
   :ensure t
+  :after nerd-icons
   :init (doom-modeline-mode 1))
 
 (provide 'init-ui)
