@@ -8,6 +8,7 @@
 
 ;; Magit
 (global-set-key (kbd "C-x c") 'magit-clone)
+(global-set-key (kbd "C-x g") 'magit)
 
 ;; Translate
 (global-set-key (kbd "C-c t") #'gts-do-translate)

@@ -65,7 +65,6 @@
 
 (use-package doom-modeline
   :ensure t
-  :after nerd-icons
   :init (doom-modeline-mode 1))
 
 (provide 'init-ui)
