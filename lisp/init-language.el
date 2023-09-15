@@ -4,6 +4,16 @@
 
 ;;; Code:
 
+(use-package yasnippet
+  :ensure t
+  :diminish yas-minor-mode
+  :init
+  (yas-global-mode 1))
+
+;; snippet collections
+(use-package yasnippet-snippets
+  :ensure t)
+
 ;; Company mode is a standard completion package that works well with lsp-mode.
 (use-package company
   :ensure t
@@ -30,15 +40,6 @@
 ;; (setq-default tab-width 4)      ; Set the default tab width to 4 spaces
 (setq-default indent-tabs-mode nil) ; Use spaces for indentation, not tabs
 (setq-default c-basic-offset 4) ; Set the default indentation width to 4 spaces (for programming modes)
-
-(use-package slime
-  :ensure t
-  :config
-  (setq inferior-lisp-program "sbcl"))
-
-(use-package restclient
-  :ensure t
-  :mode ("\\.http\\'" . restclient-mode))
 
 (use-package format-all
   :ensure t

@@ -1,4 +1,4 @@
-;;; init-editor.el --- Editor configuration.
+;;; init-basic.el --- basic configuration.
 
 ;;; Commentary:
 
@@ -124,5 +124,5 @@
   (end-of-line)
   (activate-mark))
 
-(provide 'init-editor)
-;;; init-editor.el ends here
+(provide 'init-basic)
+;;; init-basic.el ends here

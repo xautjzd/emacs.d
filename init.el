@@ -20,22 +20,29 @@
 
 (require 'init-package)
 (require 'init-ui)
-(require 'init-editor)
-(require 'init-git)
+(require 'init-basic)
+
 (require 'init-project)
-(require 'init-snippet)
 (require 'init-language)
+(require 'init-lsp)
+
+(require 'init-language-python)
+(require 'init-language-go)
 (require 'init-language-rust)
 (require 'init-language-emacs-lisp)
 (require 'init-language-common-lisp)
 (require 'init-language-lua)
+(require 'init-language-java)
+(require 'init-language-typescript)
+(require 'init-language-sql)
+
 (require 'init-mode-yml)
 (require 'init-mode-markdown)
 (require 'init-mode-org)
-(require 'init-lsp)
+
 (require 'init-key-binding)
-(require 'init-misc)
-(require 'init-sql)
+(require 'init-tool)
+
 
 ;;; init.el ends here
 (put 'upcase-region 'disabled nil)

@@ -4,6 +4,16 @@
 
 ;;; Code:
 
+;; lsp rust client
+(use-package rust-mode
+  :ensure t
+  :hook
+  (rust-mode . lsp-deferred)
+  :config
+  (setq rust-format-on-save t)
+  (setq indent-tabs-mode nil)
+  (prettify-symbols-mode))
+
 ;; (use-package flycheck-rust
 ;;   :ensure t
 ;;   :diminish

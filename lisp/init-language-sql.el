@@ -1,4 +1,4 @@
-;;; init-sql.el --- global key binding configure.
+;;; init-language-sql.el --- sql configure.
 
 ;;; Commentary:
 
@@ -58,5 +58,5 @@
 	  (lambda ()
 	    (local-set-key "\C-c \C-f" 'sqlformat)))
 
-(provide 'init-sql)
-;;; init-sql.el ends here
+(provide 'init-language-sql)
+;;; init-language-sql.el ends here

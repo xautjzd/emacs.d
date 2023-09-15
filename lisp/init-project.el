@@ -4,15 +4,8 @@
 
 ;;; Code:
 
-(use-package diminish
+(use-package magit
   :ensure t)
-
-;; search within project: S-p s r
-(use-package rg
-  :ensure t
-  :init
-  (rg-enable-default-bindings))
-;; (rg-enable-menu)
 
 ;; find file in project: s-p-f
 (use-package projectile
@@ -25,6 +18,9 @@
 
 ;; Discover projects on startup
 ;; (setq projectile-project-search-path '("~/projects/" "~/work/" ("~/github" . 1)))
+
+(use-package diminish
+  :ensure t)
 
 ;; integration with projectile, find files in project more quickly, S-p f
 (use-package ivy
@@ -44,19 +40,25 @@
   :ensure t
   :after (treemacs projectile))
 
+;; search within project: S-p s r
+(use-package rg
+  :ensure t
+  :init
+  (rg-enable-default-bindings))
+;; (rg-enable-menu)
+
 (use-package dashboard
   :ensure t
   :after nerd-icons
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-startup-banner 'logo)
-  (setq dashboard-projects-backend "projectile")
   (setq dashboard-display-icons-p t)
   (setq dashboard-set-heading-icons t)
-  (setq dashboard-set-file-icons t)  
+  (setq dashboard-set-file-icons t)
   (setq dashboard-icon-type 'nerd-icons)
   (setq dashboard-set-footer nil)
-  (dashboard-modify-heading-icons '((projects . "star")))
+  ;;  (dashboard-modify-heading-icons '((projects . "star")))
   (setq dashboard-items '((projects . 20)
 			  (recents . 10)
 			  (agenda . 2))))
