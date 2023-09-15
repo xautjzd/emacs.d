@@ -40,5 +40,11 @@
   :ensure t
   :mode ("\\.http\\'" . restclient-mode))
 
+(use-package format-all
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'format-all-mode)
+  (add-hook 'format-all-mode-hook 'format-all-ensure-formatter))
+
 (provide 'init-language)
 ;;; init-language.el ends here
