@@ -19,8 +19,8 @@
     (use-package exec-path-from-shell
       :ensure t
       :config
-      (exec-path-from-shell-initialize)
-      (setq exec-path-from-shell-arguments "-l")))
+      (setq exec-path-from-shell-arguments nil)
+      (exec-path-from-shell-initialize)))
 
 ;; Insert closing parenthesis when typing an open parenthesis.
 (add-hook 'prog-mode-hook (lambda () (electric-pair-mode 1)))
@@ -34,9 +34,9 @@
 
 ;; Never kill buffers list here
 (setq clean-buffer-list-kill-never-buffer-names (nconc clean-buffer-list-kill-never-buffer-names
-                 '("*eshell*"
-                   "*ielm*"
-                   "*dashboard*")))
+                                                       '("*eshell*"
+                                                         "*ielm*"
+                                                         "*dashboard*")))
 
 ;; Stop create backup files(~)
 (setq make-backup-files nil)
@@ -45,8 +45,8 @@
 
 ;; Disable lockfiles, format: .#
 (setq create-lockfiles nil)
-; (setq lock-file-name-transforms
-;       `((".*" ,temporary-file-directory t)))
+                                        ; (setq lock-file-name-transforms
+                                        ;       `((".*" ,temporary-file-directory t)))
 
 ;; Disable auto save file
 (setq auto-save-default nil)

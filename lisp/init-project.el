@@ -49,19 +49,18 @@
 
 (use-package dashboard
   :ensure t
-  :after nerd-icons
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-startup-banner 'logo)
   (setq dashboard-display-icons-p t)
-  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-heading-icons nil)
   (setq dashboard-set-file-icons t)
   (setq dashboard-icon-type 'nerd-icons)
   (setq dashboard-set-footer nil)
-  ;;  (dashboard-modify-heading-icons '((projects . "star")))
-  (setq dashboard-items '((projects . 20)
-			  (recents . 10)
-			  (agenda . 2))))
-
+  (setq dashboard-items '((recents  . 5)
+			  (projects . 10)
+			  (agenda . 5)
+			  (registers . 5))))
+;;  (dashboard-modify-heading-icons '((projects . "star")))
 (provide 'init-project)
 ;;; init-project.el ends here
