@@ -4,26 +4,6 @@
 
 ;;; Code:
 
-; (defvar bootstrap-version)
-; (let ((bootstrap-file
-;        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-;       (bootstrap-version 6))
-;   (unless (file-exists-p bootstrap-file)
-;     (with-current-buffer
-;         (url-retrieve-synchronously
-;          "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-;          'silent 'inhibit-cookies)
-;       (goto-char (point-max))
-;       (eval-print-last-sexp)))
-;   (load bootstrap-file nil 'nomessage))
-
-; ;; Install use-package
-; (straight-use-package 'use-package)
-
-; ;; Make all use-package calls use straight.el in the backend
-; ;; to do the actual package installation.
-; (setq straight-use-package-by-default t)
-
 (require 'package)
 (setq package-archives '(("gnu"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")

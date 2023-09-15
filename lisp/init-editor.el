@@ -126,7 +126,3 @@
 
 (provide 'init-editor)
 ;;; init-editor.el ends here
-
-;; Local Variables:
-;; byte-compile-warnings: (not free-vars)
-;; End:
