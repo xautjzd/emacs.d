@@ -15,5 +15,10 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; Startup profiler
+(use-package esup
+  :ensure t
+  :commands esup)
+
 (provide 'init-package)
 ;;; init-package.el ends here

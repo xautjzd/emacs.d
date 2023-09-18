@@ -5,7 +5,8 @@
 ;;; Code:
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;; find file in project: s-p-f
 (use-package projectile

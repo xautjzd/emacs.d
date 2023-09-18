@@ -7,9 +7,6 @@
 (use-package org-present
   :ensure t)
 
-(use-package org-tree-slide
-  :ensure t)
-
 (use-package org-bullets
   :ensure t
   :config
@@ -17,22 +14,23 @@
 
 (require 'org-tempo)
 
-(add-hook 'prog-mode-hook (lambda () (electric-pair-mode 1)))
-
 (setq org-export-default-language "zh")
 (define-auto-insert "\.org" "org-template.org")
 
-(setq org-directory "~/org/")
+(setq org-directory "~/org")
+(unless (file-exists-p org-directory)
+  (make-directory org-directory t))
+
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 ;; C-c c to add some capture template
 (setq org-capture-templates
-             '(("p" "Personal Task"  entry
-               (file "personal.org")
-               "* TODO %?" :empty-lines 1)
-			   ("w" "Work Task" entry
-			   (file "work.org")
-			   "* TODO %？" :empty-lines 1)))
+      '(("p" "Personal Task"  entry
+         (file "personal.org")
+         "* TODO %?" :empty-lines 1)
+	("w" "Work Task" entry
+	 (file "work.org")
+	 "* TODO %？" :empty-lines 1)))
 
 ;; Give it a timestamp when moving a todo task into a completed state.x
 (setq org-log-done 'time
@@ -55,17 +53,18 @@
 (global-set-key (kbd "C-c c") #'org-capture)
 
 
-;; C-c C-c evaluate code blocks, more refer: https://orgmode.org/manual/Evaluating-Code-Blocks.html 
-(org-babel-do-load-languages
-  'org-babel-load-languages
-    '((emacs-lisp . t)
-      (R . t)
-      (shell . t)
-      (C . t)
-      (python . t)
-      (ruby . t)
-      (emacs-lisp . t)
-      (latex . t)))
+;; C-c C-c evaluate code blocks, more refer: https://orgmode.org/manual/Evaluating-Code-Blocks.html
+(defun org-babel-lazy-setup()
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (shell . t)
+     (C . t)
+     (python . t)
+     (ruby . t)
+     (latex . t))))
+
+(add-hook 'org-mode-hook 'org-babel-lazy-setup)
 
 ;; C-c C-e l p export org doc to pdf
 (with-eval-after-load 'ox-latex
