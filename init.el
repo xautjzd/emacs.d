@@ -1,6 +1,6 @@
 ;;; init.el --- Zhengdong's Emacs configuration.
 
-;; Copyright (C) 2022  Zhengdong 
+;; Copyright (C) 2022  Zhengdong
 ;; Author: Zhengdong Jiang <xautjzd@gmail.com>
 ;; Keywords: configuration
 
@@ -32,7 +32,7 @@
 (require 'init-language-emacs-lisp)
 (require 'init-language-common-lisp)
 (require 'init-language-lua)
-(require 'init-language-java)
+;; (require 'init-language-java) -- disable java lsp
 (require 'init-language-typescript)
 (require 'init-language-sql)
 
@@ -45,4 +45,3 @@
 
 
 ;;; init.el ends here
-(put 'upcase-region 'disabled nil)

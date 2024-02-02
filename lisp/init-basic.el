@@ -19,7 +19,6 @@
     (use-package exec-path-from-shell
       :ensure t
       :config
-      (setq exec-path-from-shell-arguments nil)
       (exec-path-from-shell-initialize)))
 
 ;; Insert closing parenthesis when typing an open parenthesis.
@@ -123,6 +122,19 @@
   (goto-line end-line)
   (end-of-line)
   (activate-mark))
+
+;; execute buffer content as shell script
+(defun execute-buffer-as-shell-script ()
+  (interactive)
+  (let ((script (buffer-string))
+        (output-buffer (get-buffer-create "*Shell Output*")))
+    (with-current-buffer output-buffer
+      (erase-buffer))
+    (shell-command script output-buffer)
+    (pop-to-buffer output-buffer)))
+(global-set-key (kbd "C-c e") 'execute-buffer-as-shell-script)
+
+(setq-default js-indent-level 2)
 
 (provide 'init-basic)
 ;;; init-basic.el ends here

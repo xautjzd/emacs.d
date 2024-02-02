@@ -14,6 +14,8 @@
   :diminish
   :init
   (projectile-mode 1)
+  :config
+  (setq projectile-ff-transformer 'projectile-ff-truncate-to-project)
   :bind-keymap
   ("s-p" . projectile-command-map))
 

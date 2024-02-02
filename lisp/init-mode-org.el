@@ -14,8 +14,9 @@
 
 (require 'org-tempo)
 
+(add-hook 'org-mode-hook (lambda() (electric-pair-mode 0)))
 (setq org-export-default-language "zh")
-(define-auto-insert "\.org" "org-template.org")
+;;(define-auto-insert "\.org" "org-template.org")
 
 (setq org-directory "~/org")
 (unless (file-exists-p org-directory)

@@ -47,5 +47,7 @@
   (add-hook 'prog-mode-hook #'format-all-mode)
   (add-hook 'format-all-mode-hook 'format-all-ensure-formatter))
 
+(add-hook 'prog-mode-hook 'hs-minor-mode)
+
 (provide 'init-language)
 ;;; init-language.el ends here
