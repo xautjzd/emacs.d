@@ -16,7 +16,10 @@
 ;; Jump to word quickly
 (global-set-key (kbd "C-c g") 'avy-goto-word-0)
 
-(global-set-key (kbd "C-c m") 'select-current-line-to-line)
+(global-set-key (kbd "C-x t k") 'tab-close)     ; Close the current tab
+(global-set-key (kbd "C-x t r") 'tab-rename)    ; Rename the current tab
+(global-set-key (kbd "C-x t p") 'tab-previous)  ; Switch to the previous tab
+(global-set-key (kbd "C-x t n") 'tab-next)      ; Switch to the next tab
 
 ;; (global-unset-key (kbd "s-l"))
 

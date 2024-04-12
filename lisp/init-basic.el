@@ -27,6 +27,12 @@
 ;; Highlight matching parenthesis.
 (add-hook 'prog-mode-hook (lambda () (show-paren-mode 1)))
 
+;; Enable tab-bar-mode
+(tab-bar-mode 1)
+;; Hide tab bar when only one tab exists
+(setq tab-bar-show 1)
+(setq tab-bar-new-tab-choice "*scratch*")
+
 ;; Kill all the unmodified buffers that you have not used for a long time.
 (midnight-mode 1)
 (setq clean-buffer-list-delay-general 1)
@@ -122,6 +128,7 @@
   (goto-line end-line)
   (end-of-line)
   (activate-mark))
+(global-set-key (kbd "C-c m") 'select-current-line-to-line)
 
 ;; execute buffer content as shell script
 (defun execute-buffer-as-shell-script ()
@@ -133,8 +140,6 @@
     (shell-command script output-buffer)
     (pop-to-buffer output-buffer)))
 (global-set-key (kbd "C-c e") 'execute-buffer-as-shell-script)
-
-(setq-default js-indent-level 2)
 
 (provide 'init-basic)
 ;;; init-basic.el ends here

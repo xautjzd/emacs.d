@@ -53,7 +53,7 @@
 (use-package spacemacs-theme
   :ensure t
   :init
-  (load-theme 'spacemacs-dark t))
+  (load-theme 'spacemacs-light t))
 
 ;; (use-package all-the-icons
 ;;   :ensure t

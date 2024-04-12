@@ -41,6 +41,8 @@
 (setq-default indent-tabs-mode nil) ; Use spaces for indentation, not tabs
 (setq-default c-basic-offset 4) ; Set the default indentation width to 4 spaces (for programming modes)
 
+(setq-default js-indent-level 2)
+
 (use-package format-all
   :ensure t
   :config

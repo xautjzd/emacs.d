@@ -10,5 +10,10 @@
   :hook
   (python-mode . lsp-deferred))
 
+;; (use-package elpy
+;;   :ensure t
+;;   :init
+;;   (elpy-enable))
+
 (provide 'init-language-python)
 ;;; init-language-python.el ends here
