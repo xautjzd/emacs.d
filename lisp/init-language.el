@@ -23,7 +23,7 @@
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 1))
 
-(add-to-list 'load-path "~/.emacs.d/codeium.el")
+;;(add-to-list 'load-path "~/.emacs.d/codeium.el")
 
 ;; code AI
 (use-package codeium
