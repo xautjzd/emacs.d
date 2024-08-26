@@ -24,15 +24,16 @@
 
 (require 'init-project)
 (require 'init-language)
-(require 'init-lsp)
+;;(require 'init-lsp)
 
-(require 'init-language-python)
-(require 'init-language-go)
-(require 'init-language-rust)
+;; (require 'init-language-python)
+;; (require 'init-language-go)
+;; (require 'init-language-rust)
 (require 'init-language-emacs-lisp)
 (require 'init-language-common-lisp)
 (require 'init-language-lua)
 ;; (require 'init-language-java) -- disable java lsp
+(require 'init-language-html)
 (require 'init-language-typescript)
 (require 'init-language-sql)
 

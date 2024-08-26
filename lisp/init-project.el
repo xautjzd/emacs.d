@@ -53,17 +53,26 @@
 (use-package dashboard
   :ensure t
   :config
-  (dashboard-setup-startup-hook)
   (setq dashboard-startup-banner 'logo)
-  (setq dashboard-display-icons-p t)
-  (setq dashboard-set-heading-icons nil)
+  (setq dashboard-banner-logo-title "Hack the Planet")
+  (setq dashboard-projects-backend  'projectile)
+  (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
+  (setq dashboard-display-icons-p t)
   (setq dashboard-icon-type 'nerd-icons)
-  (setq dashboard-set-footer nil)
   (setq dashboard-items '((recents  . 5)
-			  (projects . 10)
-			  (agenda . 5)
-			  (registers . 5))))
-;;  (dashboard-modify-heading-icons '((projects . "star")))
+		          (projects . 5)
+		          (agenda . 5)
+		          (bookmarks . 5)
+		          (registers . 5)))
+  (dashboard-setup-startup-hook)
+  (setq dashboard-startupify-list '(dashboard-insert-banner
+                                    dashboard-insert-newline
+                                    dashboard-insert-banner-title
+                                    dashboard-insert-newline
+                                    dashboard-insert-navigator
+                                    dashboard-insert-newline
+                                    dashboard-insert-init-info
+                                    dashboard-insert-items)))
 (provide 'init-project)
 ;;; init-project.el ends here

@@ -5,10 +5,10 @@
 ;;; Code:
 
 ;; lsp python client
-(use-package lsp-pyright
-  :ensure t
-  :hook
-  (python-mode . lsp-deferred))
+;; (use-package lsp-pyright
+;;   :ensure t
+;;   :hook
+;;   (python-mode . lsp-deferred))
 
 ;; (use-package elpy
 ;;   :ensure t

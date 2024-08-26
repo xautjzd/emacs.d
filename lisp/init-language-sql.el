@@ -57,10 +57,5 @@
 	  (lambda ()
 	    (local-set-key "\C-c \C-f" 'sqlformat)))
 
-(use-package sql-completions
-  :ensure t
-  :config
-  (define-key sql-interactive-mode-map (kbd "TAB") #'company-complete))
-
 (provide 'init-language-sql)
 ;;; init-language-sql.el ends here

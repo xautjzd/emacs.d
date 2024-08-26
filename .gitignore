@@ -16,3 +16,6 @@ abbrev_defs
 bookmarks
 url/
 network-security.data
+codeium.el/
+codeium/
+tramp

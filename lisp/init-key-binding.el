@@ -14,7 +14,7 @@
 (global-set-key (kbd "C-c t") #'gts-do-translate)
 
 ;; Jump to word quickly
-(global-set-key (kbd "C-c g") 'avy-goto-word-0)
+(global-set-key (kbd "C-c g") 'avy-goto-char-timer)
 
 (global-set-key (kbd "C-x t k") 'tab-close)     ; Close the current tab
 (global-set-key (kbd "C-x t r") 'tab-rename)    ; Rename the current tab

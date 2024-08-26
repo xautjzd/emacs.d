@@ -19,14 +19,21 @@
   :ensure t
   :config
   ;; Optionally enable completion-as-you-type behavior.
+  (global-company-mode t)
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 1))
 
+(add-to-list 'load-path "~/.emacs.d/codeium.el")
+
 ;; code AI
-;; (use-package codeium
-;;   :ensure t
-;;   :init
-;;   (add-to-list 'completion-at-point-functions #'codeium-completion-at-point))
+(use-package codeium
+  :init
+  (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
+  :config
+  ;; get codeium status in the modeline
+  (setq codeium-mode-line-enable
+        (lambda (api) (not (memq api '(CancelRequest Heartbeat AcceptCompletion)))))
+  (add-to-list 'mode-line-format '(:eval (car-safe codeium-mode-line)) t))
 
 (use-package flycheck
   :ensure t

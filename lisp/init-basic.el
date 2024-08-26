@@ -28,10 +28,10 @@
 (add-hook 'prog-mode-hook (lambda () (show-paren-mode 1)))
 
 ;; Enable tab-bar-mode
-(tab-bar-mode 1)
+;; (tab-bar-mode 1)
 ;; Hide tab bar when only one tab exists
-(setq tab-bar-show 1)
-(setq tab-bar-new-tab-choice "*scratch*")
+;; (setq tab-bar-show 1)
+;; (setq tab-bar-new-tab-choice "*scratch*")
 
 ;; Kill all the unmodified buffers that you have not used for a long time.
 (midnight-mode 1)
